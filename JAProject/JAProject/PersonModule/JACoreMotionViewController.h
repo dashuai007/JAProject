@@ -7,6 +7,7 @@
 //
 
 #import "JABaseViewController.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface JACoreMotionViewController : JABaseViewController
 
