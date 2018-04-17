@@ -1,41 +1,49 @@
 //
-//  JAPersonViewController.m
+//  JAFontViewController.m
 //  JAProject
 //
-//  Created by xiazhongchong on 23/03/2018.
+//  Created by xiazhongchong on 2018/4/17.
 //  Copyright © 2018 esunny. All rights reserved.
 //
 
-#import "JAPersonViewController.h"
 #import "JAFontViewController.h"
-#import "JACoreMotionViewController.h"
 
-@interface JAPersonViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@interface JAFontViewController () <UITableViewDataSource, UITableViewDelegate>
+{
+    NSMutableArray <NSString *>*fontFamilies;
+}
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
-@implementation JAPersonViewController
+@implementation JAFontViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor cyanColor];
-    self.title = @"Person";
+    self.view.backgroundColor = [UIColor whiteColor];
+    fontFamilies = [NSMutableArray array];
+    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    //当前字体
     
-    [self tableView];
+    NSArray *familyNames = [UIFont familyNames];
+    for (id family in familyNames) {
+        NSArray* fonts = [UIFont fontNamesForFamilyName:family];
+        for (id font in fonts)
+        {
+            [fontFamilies addObject:font];
+        }
+    }
+    [self.tableView reloadData];
     
 }
-
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-        _tableView.backgroundColor = [UIColor whiteColor];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"simpleCell"];
         [self.view addSubview:_tableView];
     }
@@ -43,23 +51,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    __weak typeof(self) weakSelf = self;
-    switch (indexPath.row) {
-        case 0: {
-            JAFontViewController *vc = [[JAFontViewController alloc] init];
-            vc.fontBlock = ^{
-                [weakSelf.tableView reloadData];
-            };
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 1: {
-            JACoreMotionViewController *vc = [[JACoreMotionViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        default:
-            break;
+    [[NSUserDefaults standardUserDefaults] setObject:fontFamilies[indexPath.row] forKey:kSelectedFontStr];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (self.fontBlock) {
+        self.fontBlock();
     }
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,7 +69,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return fontFamilies.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,19 +77,11 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"simpleCell"];
     }
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"选择字体";
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"运动";
-    }
-    cell.textLabel.font = kFont;
+    cell.textLabel.text = fontFamilies[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:fontFamilies[indexPath.row] size:[UIFont systemFontSize]];
+                                 
     return cell;
 }
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

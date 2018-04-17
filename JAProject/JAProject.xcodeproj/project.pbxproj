@@ -22,6 +22,8 @@
 		BA5A3F172064EC1200366D57 /* JABaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5A3F162064EC1200366D57 /* JABaseTableView.m */; };
 		BA5A3F1A2064ECED00366D57 /* JABaseTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5A3F192064ECED00366D57 /* JABaseTools.m */; };
 		BA5A3F212064EF7D00366D57 /* UIView+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5A3F202064EF7D00366D57 /* UIView+Tools.m */; };
+		BA99EC4B2085869E00CA5468 /* JAFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA99EC4A2085869E00CA5468 /* JAFontViewController.m */; };
+		BAC94EFD2071BB8900116ACC /* JACoreMotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC94EFC2071BB8900116ACC /* JACoreMotionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,10 @@
 		BA5A3F1F2064EF7D00366D57 /* UIView+Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Tools.h"; sourceTree = "<group>"; };
 		BA5A3F202064EF7D00366D57 /* UIView+Tools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Tools.m"; sourceTree = "<group>"; };
 		BA5A3F222064F1CC00366D57 /* JAHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAHeader.h; sourceTree = "<group>"; };
+		BA99EC492085869E00CA5468 /* JAFontViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAFontViewController.h; sourceTree = "<group>"; };
+		BA99EC4A2085869E00CA5468 /* JAFontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAFontViewController.m; sourceTree = "<group>"; };
+		BAC94EFB2071BB8900116ACC /* JACoreMotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JACoreMotionViewController.h; sourceTree = "<group>"; };
+		BAC94EFC2071BB8900116ACC /* JACoreMotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JACoreMotionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,10 @@
 			children = (
 				BA5A3F122064E76A00366D57 /* JAPersonViewController.h */,
 				BA5A3F132064E76A00366D57 /* JAPersonViewController.m */,
+				BA99EC492085869E00CA5468 /* JAFontViewController.h */,
+				BA99EC4A2085869E00CA5468 /* JAFontViewController.m */,
+				BAC94EFB2071BB8900116ACC /* JACoreMotionViewController.h */,
+				BAC94EFC2071BB8900116ACC /* JACoreMotionViewController.m */,
 			);
 			path = PersonModule;
 			sourceTree = "<group>";
@@ -289,6 +299,11 @@
 					BA5A3EC62064E58900366D57 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BA5A3EDE2064E58A00366D57 = {
 						CreatedOnToolsVersion = 9.2;
@@ -353,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC94EFD2071BB8900116ACC /* JACoreMotionViewController.m in Sources */,
 				BA5A3F112064E75400366D57 /* JAThinkViewController.m in Sources */,
 				BA5A3EFE2064E5DC00366D57 /* JATabBarViewController.m in Sources */,
 				BA5A3F052064E63C00366D57 /* JABaseNavigationViewController.m in Sources */,
@@ -363,6 +379,7 @@
 				BA5A3F172064EC1200366D57 /* JABaseTableView.m in Sources */,
 				BA5A3EDA2064E58A00366D57 /* main.m in Sources */,
 				BA5A3F022064E61600366D57 /* JABaseViewController.m in Sources */,
+				BA99EC4B2085869E00CA5468 /* JAFontViewController.m in Sources */,
 				BA5A3ECC2064E58A00366D57 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -507,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

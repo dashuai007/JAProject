@@ -20,3 +20,5 @@
 #import "UIView+Tools.h"
 #import "JAHeader.h"
 
+#define kSelectedFontStr @"JA_SelectedFont"
+#define kFont [[NSUserDefaults standardUserDefaults] objectForKey:kSelectedFontStr] ? [UIFont fontWithName:[[NSUserDefaults standardUserDefaults] objectForKey:kSelectedFontStr] size:[UIFont systemFontSize]] : [UIFont systemFontOfSize:[UIFont systemFontSize]]
