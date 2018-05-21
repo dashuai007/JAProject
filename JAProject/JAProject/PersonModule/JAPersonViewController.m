@@ -9,6 +9,7 @@
 #import "JAPersonViewController.h"
 #import "JAFontViewController.h"
 #import "JACoreMotionViewController.h"
+#import "JAMobLoginViewController.h"
 
 @interface JAPersonViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -57,6 +58,12 @@
             JACoreMotionViewController *vc = [[JACoreMotionViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
+            break;
+        case 2: {
+            JAMobLoginViewController *vc = [[JAMobLoginViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -71,7 +78,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,6 +90,8 @@
         cell.textLabel.text = @"选择字体";
     } else if (indexPath.row == 1) {
         cell.textLabel.text = @"运动";
+    } else if (indexPath.row == 2) {
+        cell.textLabel.text = @"三方登录";
     }
     cell.textLabel.font = kFont;
     return cell;
